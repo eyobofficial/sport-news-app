@@ -5,6 +5,23 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 
+class PostManager(models.Manager):
+    def draft(self):
+        return self.filter(status=0)
+
+    def published(self):
+        return self.filter(status=1)
+
+    def featured(self):
+        return self.published().filter(featured=True)
+
+    def breaking(self):
+        return self.published().filter(breaking=True)
+
+    def popular(self):
+        return self.published().order_by('read_count')
+
+
 def handle_deleted_user():
     return get_user_model().objects.get_or_create(username='Unkown User')[0]
 
@@ -37,7 +54,8 @@ class Base(models.Model):
 
 
 class Catagory(Base):
-    title = models.CharField(max_length=60)
+    title = models.CharField(max_length=120)
+    translation = models.CharField(max_length=60)
     slug = models.SlugField()
 
     class Meta:
@@ -53,7 +71,8 @@ class Catagory(Base):
 
 
 class Tag(Base):
-    title = models.CharField(max_length=60)
+    title = models.CharField(max_length=120)
+    translation = models.CharField(max_length=60)
     slug = models.SlugField()
 
     class Meta:
@@ -80,7 +99,8 @@ class Post(Base):
         on_delete=models.SET_NULL,
     )
     tags = models.ManyToManyField(Tag, blank=True, related_name='posts')
-    title = models.CharField(max_length=60)
+    title = models.CharField(max_length=120)
+    translation = models.CharField(max_length=60)
     slug = models.SlugField()
     thumbnail = models.ImageField(upload_to='posts/', null=True, blank=True)
     body = models.TextField(blank=True)
@@ -88,10 +108,16 @@ class Post(Base):
         choices=STATUS_OPTIONS,
         default=0,
     )
-    is_featured = models.BooleanField(default=False)
+    published_at = models.DateTimeField(null=True, blank=True)
+    featured = models.BooleanField(default=False)
+    breaking = models.BooleanField(default=False)
+    read_count = models.PositiveIntegerField(default=1)
+
+    objects = PostManager()
 
     class Meta:
         ordering = ['-updated_at', '-status', ]
+        get_latest_by = ['-published_at', ]
 
     def __str__(self):
         return self.title

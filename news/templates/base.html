@@ -1,0 +1,331 @@
+{% load static %}<!doctype html>
+<html class="no-js">
+    <head>
+    {% block head %}
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>
+            {% block title %}
+                {% if page_name %} {{ page_name|title }} - {% endif %}
+                Libro Sports
+            {% endblock title %}
+        </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="#" type="image/x-icon">
+        <link rel="icon" href="#" type="image/x-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+        
+        {% block vendor_css %}
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{% static 'assets/css/assets/bootstrap.min.css' %}">
+
+        <!-- Fontawesome Icon -->
+        <link rel="stylesheet" href="{% static 'assets/css/assets/font-awesome.min.css' %}">
+
+        <!-- Animate CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/assets/animate.css' %}">
+
+        <!-- Mean Menu -->
+        <link rel="stylesheet" href="{% static 'assets/css/assets/meanmenu.min.css' %}">
+
+        <!-- Owl Carousel -->
+        <link rel="stylesheet" href="{% static 'assets/css/assets/owl.carousel.min.css' %}">
+
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="{% static 'assets/css/assets/magnific-popup.css' %}">
+        {% endblock vendor_css %}
+
+        {% block pre_page_css %}{% endblock pre_page_css %}
+
+        <!-- Custom Style -->
+        {% block custom_css %}
+        <link rel="stylesheet" href="{% static 'assets/css/assets/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/assets/responsive.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+        {% endblock custom_css %}
+
+        {% block post_page_css %}{% endblock post_page_css %}
+    {% endblock head %}
+    </head>
+    <body>
+        <!-- Pre-Loader -->
+        {% block pre_loader %}
+            <div id="page-preloader"><span class="spinner"></span></div>
+        {% endblock pre_loader %}
+        <!-- End Pre-Loader -->
+
+        <!-- Top Bar -->
+        {% block top_bar %}
+        <section class="top-bar">
+        	<div class="container">
+                <div class="bar-content">
+            		<div class="row">
+                        <div class="col-md-8">
+                            <div class="bar-left">
+                                <ul class="list-unstyled list-inline">
+                                    <li class="list-inline-item"><a href="#">Advertise</a></li>
+                                    <li class="list-inline-item"><a href="#">Write Us</a></li>
+                                    <li class="list-inline-item"><a href="#">About</a></li>
+                                    <li class="list-inline-item"><a href="#">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+        				<div class="col-md-4">
+                            <div class="bar-social text-right">
+                                <ul class="list-unstyled list-inline">
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-rss"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-skype"></i></a></li>
+                                </ul>
+                            </div>
+        				</div>
+            		</div>
+                </div>
+        	</div>
+        </section>
+        {% endblock top_bar %}
+		<!-- End Top Bar -->
+
+        <!-- Logo Area -->
+        {% block logo_area %}
+        <section class="logo-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="logo">
+                            <a href="#"><img src="{% static 'assets/images/logo.png' %}" alt="" class="img-fluid"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="searchbar text-right">
+                            <form action="##">
+                                <input placeholder="Search Here" type="text" required="">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock logo_area %}
+        <!-- End Logo Area -->
+
+        <!-- Menu Area -->
+        {% block desktop_menu %}
+        <section class="menu-area">
+            <div class="container">
+                <div class="menu-content">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-12">
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item active"><a href="#">መነሻ</a></li>
+                                <li class="list-inline-item"><a href="#">ዝውውር</a></li>
+                                <li class="list-inline-item"><a>የአውሮፓ ሊጎች<i class="fa fa-angle-down"></i></a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="#">እንግሊዝ</a></li>
+                                        <li><a href="#">ስፔን</a></li>
+                                        <li><a href="#">ጣሊያን</a></li>
+                                        <li><a href="#">ጀርመን</a></li>
+                                    </ul>
+                                </li>
+                                <li class="list-inline-item"><a href="#">አለም ዋንጫ</a></li>
+                                <li class="list-inline-item"><a href="#">ጨዋታወች</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-12">
+                            <div class="clock text-right">
+                                <span id="dg-clock"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock desktop_menu %}
+        <!-- End Menu Area -->
+
+        <!-- Mobile Menu -->
+        {% block mobile_menu %}
+        <section class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <a href="#"><img src="images/mobile-logo.png" alt="" class="img-fluid"></a>
+                                <a href="#"><i class="fa fa-home"></i></a>
+                                <ul>
+                                    <li class="list-inline-item"><a href="#">HOME</a></li>
+                                    <li class="list-inline-item"><a href="#">PAGES</a>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">HOME</a></li>
+                                            <li><a href="about.html">ABOUT</a></li>
+                                            <li><a href="#">CATAGORY</a>
+                                                <ul>
+                                                    <li><a href="catagory-one.html">CATAGORY ONE</a></li>
+                                                    <li><a href="catagory-two.html">CATAGORY TWO</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">NEWS DETAILS</a>
+                                                <ul>
+                                                    <li><a href="news-details-one.html">NEWS DETAILS ONE</a></li>
+                                                    <li><a href="news-details-two.html">NEWS DETAILS TWO</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">CONTACT</a></li>
+                                            <li><a href="faq.html">FAQ</a></li>
+                                            <li><a href="coming-soon.html">COMING_SOON</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-inline-item"><a href="#">WORLD</a></li>
+                                    <li class="list-inline-item"><a href="#">HEALTH</a></li>
+                                    <li class="list-inline-item"><a href="#">TECHNOLOGY</a></li>
+                                    <li class="list-inline-item"><a href="#">POLITICS</a></li>
+                                    <li class="list-inline-item"><a href="#">SPORTS</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock mobile_menu %}
+        <!-- End Mobile Menu -->
+
+        <!-- Web Ticker -->
+        {% block breaking_news_area %}
+        {% endblock breaking_news_area %}
+        <!-- End Web Ticker -->
+
+        <!-- Slider Area -->
+        {% block slider_area %}
+        {% endblock slider_area %}
+        <!-- End Slider Area -->
+        
+        {% block content %}
+        {% endblock content %}
+
+        <!-- Footer -->
+        {% block footer %}
+        <footer>
+            <div class="container">
+                <div class="footer-c">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="footer-about">
+                                <h4>ABOUT</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ex, ea. Mollitia consequuntur dolorum cum sed ea cupiditate nisi in quis animi. Accusantium magni impedit, magnam! Similique cumque labore illum.</p>
+                                <ul class="list-unstyled list-inline">
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-rss"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-skype"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="footer-link">
+                                <h4>ADDITIONAL</h4>
+                                <ul class="list-unstyled">
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>Become A Member</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>Legal Agreement</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>Privacy Policy</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>Terms & Condition</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>Work For Us</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>Newsletter Signup</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="footer-twitter">
+                                <h4>TWITTER</h4>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-twitter"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#">https://bh.com/</a></li>
+                                    <li><i class="fa fa-twitter"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#">https://bh.com/</a></li>
+                                    <li><i class="fa fa-twitter"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#">https://bh.com/</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="copyright-text">
+                                <p>Copyright &copy; 2017 <a href="#">TenNews</a>. All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="designer-text text-right">
+                                <p>Designed With <i class="fa fa-heart"></i> By <a href="#">SnazzyTheme</a></p>
+                            </div>
+                            <div class="back-to-top">
+                                <i class="fa fa-angle-double-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% endblock footer %}
+        <!-- End Footer -->         		
+        
+        <!-- =========================================
+        JavaScript Files
+        ========================================== -->
+        {% block vendor_script %}
+        <!-- jQuery JS -->
+        <script src="{% static 'assets/js/assets/vendor/jquery-1.12.4.min.js' %}"></script>
+        
+        <!-- Poppers Js -->
+        <script src="{% static 'assets/js/assets/popper.js' %}"></script>
+
+        <!-- Bootstrap -->
+        <script src="{% static 'assets/js/assets/bootstrap.min.js' %}"></script>
+		
+		<!-- Sticky Js -->
+        <script src="{% static 'assets/js/assets/jquery.sticky.js' %}"></script>
+
+        <!-- WOW JS -->
+        <script src="{% static 'assets/js/assets/wow.min.js' %}"></script>
+
+        <!-- Smooth Scroll -->
+        <script src="{% static 'assets/js/assets/smooth-scroll.js' %}"></script>
+
+        <!-- Mean Menu -->
+        <script src="{% static 'assets/js/assets/jquery.meanmenu.min.js' %}"></script>
+
+        <!-- News Ticker -->
+        <script src="{% static 'assets/js/assets/jquery.newsticker.min.js' %}"></script>
+
+        <!-- Owl Carousel -->
+        <script src="{% static 'assets/js/assets/owl.carousel.min.js' %}"></script>
+
+        <!-- Magnific Popup -->
+        <script src="{% static 'assets/js/assets/jquery.magnific-popup.min.js' %}"></script>
+
+        <!-- Syotimer -->
+        <script src="{% static 'assets/js/assets/jquery.syotimer.min.js' %}"></script>
+        {% endblock vendor_script %}
+
+        {% block pre_page_script %}{% endblock pre_page_script %}
+
+        <!-- Custom JS -->
+        {% block custom_script %}
+        <script src="{% static 'assets/js/plugins.js' %}"></script>
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+        {% endblock custom_script %}
+
+        {% block post_page_script %}{% endblock post_page_script %}
+    </body>
+</html>
