@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block heading %}
+<!-- Page Heading -->
+<section class="p-heading text-center">
+    <div class="container">
+        <div class="page-bg">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="p-content">
+                        <h4>ዝውውር</h4>
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item"><a href="{% url 'news:index' %}">መነሻ</a></li>
+                            <li class="list-inline-item"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>ዝውውር</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Page Heading -->
+{% endblock heading %}
+
+{% block content %}
+<!-- Catagory -->
+<section class="catagory">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                {% for post in post_list %}
+                <div class="catagory-content">
+                    <div class="cat-img">
+                        <a href="#">
+                            {% if post.thumbnail %}
+                            <img src="{{ post.thumbail.url }}" alt="{{ post.title }}" class="img-fluid">
+                            {% else %}
+                            <img src="{% static 'assets/images/soccer-default.jpg' %}" alt="{{ post.title }}" class="img-fluid">
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="img-content">
+                        <h6><a href="#">{{ post.title }}</a></h6>
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">{{ post.catagory.title }}</li>
+                            <li class="list-inline-item">September 24, 2017</li>
+                        </ul>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi debitis suscipit nesciunt nihil deleniti dolorum reiciendis aspernatur recusandae in, dolore quod pariatur......</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="pagi">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item active"><a href="catagory-one.html">1</a></li>
+                        <li class="list-inline-item"><a href="catagory-one.html">2</a></li>
+                        <li class="list-inline-item"><a href="catagory-one.html">3</a></li>
+                        <li class="list-inline-item"><a href="catagory-one.html">...</a></li>
+                        <li class="list-inline-item"><a href="catagory-one.html">15</a></li>
+                        <li class="list-inline-item"><a href="catagory-one.html"><i class="fa fa-angle-right"></i></a></li>
+                        <li class="list-inline-item"><a href="catagory-one.html"><i class="fa fa-angle-double-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                {% include 'partials/sidebar.html' %}
+            </div>
+        </div>   
+    </div>
+</section>
+<!-- End Catagory -->
+{% endblock content %}

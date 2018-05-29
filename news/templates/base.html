@@ -69,10 +69,9 @@
                         <div class="col-md-8">
                             <div class="bar-left">
                                 <ul class="list-unstyled list-inline">
-                                    <li class="list-inline-item"><a href="#">Advertise</a></li>
-                                    <li class="list-inline-item"><a href="#">Write Us</a></li>
-                                    <li class="list-inline-item"><a href="#">About</a></li>
-                                    <li class="list-inline-item"><a href="#">Contact</a></li>
+                                    <li class="list-inline-item"><a href="#">ድርጅቶን ያስተዋውቁ</a></li>
+                                    <li class="list-inline-item"><a href="#">ትንሽ ስለኛ</a></li>
+                                    <li class="list-inline-item"><a href="#">አድራሻችን</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -128,8 +127,8 @@
                     <div class="row">
                         <div class="col-lg-10 col-md-12">
                             <ul class="list-unstyled list-inline">
-                                <li class="list-inline-item active"><a href="#">መነሻ</a></li>
-                                <li class="list-inline-item"><a href="#">ዝውውር</a></li>
+                                <li class="list-inline-item active"><a href="{% url 'news:index' %}">መነሻ</a></li>
+                                <li class="list-inline-item"><a href="{% url 'news:transfers' %}">ዝውውር</a></li>
                                 <li class="list-inline-item"><a>የአውሮፓ ሊጎች<i class="fa fa-angle-down"></i></a>
                                     <ul class="list-unstyled">
                                         <li><a href="#">እንግሊዝ</a></li>
@@ -212,6 +211,9 @@
         {% block slider_area %}
         {% endblock slider_area %}
         <!-- End Slider Area -->
+
+        {% block heading %}
+        {% endblock heading %}
         
         {% block content %}
         {% endblock content %}

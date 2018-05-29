@@ -83,6 +83,9 @@ class Tag(Base):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self, *args, **kwargs):
+        return reverse('news:tag-detail', args=[str(self.pk), self.slug, ])
+
 
 class Post(Base):
     STATUS_OPTIONS = (
@@ -105,6 +108,7 @@ class Post(Base):
     translation = models.CharField(max_length=60)
     slug = models.SlugField()
     thumbnail = models.ImageField(upload_to='posts/', null=True, blank=True)
+    picture1 = models.ImageField(upload_to='posts/', null=True, blank=True)
     body = models.TextField(blank=True)
     status = models.PositiveSmallIntegerField(
         choices=STATUS_OPTIONS,
