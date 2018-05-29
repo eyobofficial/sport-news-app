@@ -5,7 +5,7 @@ from . import models
 # Register Custom User
 @admin.register(models.CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ['last_name', 'first_name', 'username', ]
+    list_display = ['username', 'get_full_name', 'is_active', ]
 
 
 # Register Catagory model
@@ -17,6 +17,8 @@ class CatagoryAdmin(admin.ModelAdmin):
 # Register Tag model
 @admin.register(models.Tag)
 class TagAdmin(admin.ModelAdmin):
+    list_display = ['pk', 'title', 'translation', 'slug', ]
+    list_display_links = ['title', ]
     prepopulated_fields = {'slug': ('translation', )}
 
 

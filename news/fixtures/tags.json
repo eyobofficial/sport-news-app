@@ -1,0 +1,47 @@
+[
+    {
+        "model": "news.tag",
+        "pk": 1,
+        "fields": {
+            "title": "ዝውውር",
+            "translation": "Transfer",
+            "slug": "transfer"
+        }
+    },
+    {
+        "model": "news.tag",
+        "pk": 2,
+        "fields": {
+            "title": "ሊግ",
+            "translation": "League",
+            "slug": "league"
+        }
+    },
+    {
+        "model": "news.tag",
+        "pk": 3,
+        "fields": {
+            "title": "ፕርሜየር ሊግ",
+            "translation": "EPL",
+            "slug": "epl"
+        }
+    },
+    {
+        "model": "news.tag",
+        "pk": 4,
+        "fields": {
+            "title": "ላሊጋ",
+            "translation": "La Liga",
+            "slug": "la-liga"
+        }
+    },
+    {
+        "model": "news.tag",
+        "pk": 5,
+        "fields": {
+            "title": "ሴሪያ",
+            "translation": "Seria A",
+            "slug": "seria-a"
+        }
+    }
+]

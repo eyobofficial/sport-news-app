@@ -40,11 +40,13 @@ class CustomUser(AbstractUser):
 class Base(models.Model):
     created_at = models.DateTimeField(
         'Created date',
+        null=True, blank=True,
         auto_now_add=True,
         help_text='Record created date',
     )
     updated_at = models.DateTimeField(
         'Modified date',
+        null=True, blank=True,
         auto_now=True,
         help_text='Record last updated date',
     )
