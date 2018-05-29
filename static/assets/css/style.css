@@ -248,12 +248,12 @@ button {
   margin-right: 12px;
 }
 
-.top-bar .bar-content .bar-left ul li:nth-child(2) {
+/* .top-bar .bar-content .bar-left ul li:nth-child(2) {
   position: relative;
   margin-right: 25px;
 }
 
-.top-bar .bar-content .bar-left ul li:nth-child(2):before {
+.top-bar .bar-content .bar-left ul li:nth-child(n+2):before {
   position: absolute;
   content: '';
   background: #777;
@@ -261,7 +261,13 @@ button {
   height: 13px;
   top: 3px;
   right: -15px;
+} */
+
+.top-bar .bar-left li.list-inline-item:nth-of-type(-n+2):after {
+  content: '\2022';
+  padding-left: 12px;
 }
+
 
 .top-bar .bar-content .bar-left ul li i {
   margin-right: 5px;
