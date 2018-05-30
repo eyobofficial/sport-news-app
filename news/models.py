@@ -75,7 +75,7 @@ class Catagory(Base):
 class Tag(Base):
     title = models.CharField(max_length=120)
     translation = models.CharField(max_length=60)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
 
     class Meta:
         ordering = ['title', '-updated_at', ]
@@ -84,7 +84,7 @@ class Tag(Base):
         return self.title
 
     def get_absolute_url(self, *args, **kwargs):
-        return reverse('news:tag-detail', args=[str(self.pk), self.slug, ])
+        return reverse('news:tag-detail', args=[self.slug])
 
 
 class Post(Base):
@@ -129,7 +129,7 @@ class Post(Base):
         return self.title
 
     def get_absolute_url(self, *args, **kwargs):
-        return reverse('news:post-detail', args=[str(self.pk)])
+        return reverse('news:post-detail', args=[str(self.pk), self.slug, ])
 
 
 class Comment(Base):
