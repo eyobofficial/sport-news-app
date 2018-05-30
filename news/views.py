@@ -10,6 +10,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
+        context['breaking_post_list'] = models.Post.objects.breaking()[:10]
         context['page_name'] = 'መነሻ'
         return context
 

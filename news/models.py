@@ -35,6 +35,9 @@ class CustomUser(AbstractUser):
         upload_to='users/avatar/',
         null=True, blank=True,
     )
+    bio = models.TextField('Author bio', blank=True)
+    facebook = models.URLField(max_length=255, blank=True)
+    twitter = models.URLField(max_length=255, blank=True)
 
 
 class Base(models.Model):

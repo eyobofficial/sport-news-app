@@ -13,10 +13,9 @@
                             <span>ሰበር ዜናዎች<i class="fa fa-caret-right"></i></span>
                         </div>
                         <ul id="webTicker">
-                            <li><a href="#"><i class="fa fa-dot-circle-o"></i>These sentences are selected from various online news.</a></li>
-                            <li><a href="#"><i class="fa fa-dot-circle-o"></i>This handout will help you understand how paragraphs are formed.</a></li>
-                            <li><a href="#"><i class="fa fa-dot-circle-o"></i>It is usually composed of several sentences that together develop one.</a></li>
-                            <li><a href="#"><i class="fa fa-dot-circle-o"></i>The purpose of this handout is to give some basic instruction.</a></li>
+                            {% for post in breaking_post_list %}
+                            <li><a href="{% url 'news:post-detail' post.id post.slug %}"><i class="fa fa-dot-circle-o"></i>{{ post.title }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
