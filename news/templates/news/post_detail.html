@@ -59,7 +59,11 @@
                     </div>
                 </div>
                 <div class="news-author clearfix">
-                    <img src="{% static 'assets/images/author.jpg' %}" alt="" class="img-fluid">
+                    {% if post.author.avatar %}
+                    <img src="{{ post.author.avatar.url }}" alt="" class="img-fluid">
+                    {% else %}
+                     <img src="{% static 'assets/images/avatar-placeholder.jpg' %}" alt="" class="img-fluid">
+                    {% endif %}
                     <h6>ዘጋቢ: <span>{{ post.author.get_full_name }}</span></h6>
                     <p>{{ post.author.bio }}</p>
                     <ul class="list-unstyled list-inline">
@@ -75,7 +79,7 @@
                     <h4>COMMENTS <span>(03)</span></h4>
                     <div class="comment-box d-flex">
                         <div class="comment-img">
-                            <img src="images/comment-1.jpg" alt="" class="img-fluid">
+                            <img src="{% static 'assets/images/avatar-placeholder.jpg' %}" alt="" class="img-fluid">
                         </div>
                         <div class="img-content">
                             <h6><a href="news-details-one.html">DAVID BOJE</a> September 24, 2017 at 3:15pm</h6>
