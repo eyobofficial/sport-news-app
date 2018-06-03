@@ -10,7 +10,10 @@ class PostManager(models.Manager):
         return self.filter(status=0)
 
     def published(self):
-        return self.filter(status=1)
+        return self.filter(status=1).order_by('-published_at')
+
+    def non_featured(self):
+        return self.published().filter(featured=False)
 
     def featured(self):
         return self.published().filter(featured=True)
@@ -62,6 +65,15 @@ class Catagory(Base):
     title = models.CharField(max_length=120)
     translation = models.CharField(max_length=60)
     slug = models.SlugField()
+    thumbnail = models.ImageField(
+        upload_to='catagory/thumbnails/',
+        blank=True,
+        help_text='100x81 pixels thumbnail'
+    )
+    picture = models.ImageField(
+        upload_to='catagory/pictures/',
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'News Catagory'
@@ -110,8 +122,12 @@ class Post(Base):
     title = models.CharField(max_length=120)
     translation = models.CharField(max_length=60)
     slug = models.SlugField()
-    thumbnail = models.ImageField(upload_to='posts/', null=True, blank=True)
-    picture1 = models.ImageField(upload_to='posts/', null=True, blank=True)
+    thumbnail_sm = models.ImageField(
+        upload_to='posts/thumbnails/',
+        blank=True,
+        help_text='100x81 pixels thumbnail'
+    )
+    picture = models.ImageField(upload_to='posts/pictures/', blank=True)    
     body = models.TextField(blank=True)
     status = models.PositiveSmallIntegerField(
         choices=STATUS_OPTIONS,
@@ -125,7 +141,7 @@ class Post(Base):
     objects = PostManager()
 
     class Meta:
-        ordering = ['-updated_at', '-status', ]
+        ordering = ['-published_at', '-updated_at', '-status', ]
         get_latest_by = ['-published_at', ]
 
     def __str__(self):
@@ -133,6 +149,10 @@ class Post(Base):
 
     def get_absolute_url(self, *args, **kwargs):
         return reverse('news:post-detail', args=[str(self.pk), self.slug, ])
+
+    def update_read_count(self, *args, **kwargs):
+        self.read_count += 1
+        self.save()
 
 
 class Comment(Base):

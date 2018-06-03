@@ -33,10 +33,10 @@
                 <div class="catagory-content clearfix">
                     <div class="cat-img">
                         <a href="{% url 'news:post-detail' post.id post.slug %}">
-                            {% if post.thumbnail %}
-                            <img src="{{ post.thumbail.url }}" alt="{{ post.title }}" class="img-fluid">
+                            {% if post.picture %}
+                            <img src="{{ post.picture.url }}" alt="{{ post.title }}" class="img-fluid" width="260" height="169">
                             {% else %}
-                            <img src="{% static 'assets/images/soccer-default.jpg' %}" alt="{{ post.title }}" class="img-fluid">
+                            <img src="{{ post.catagory.picture.url }}" alt="{{ post.title }}" class="img-fluid" width="260" height="169">
                             {% endif %}
                         </a>
                     </div>

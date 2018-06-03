@@ -35,7 +35,9 @@
                         <li class="list-inline-item"><i class="fa fa-calendar"></i>September 24, 2017</li>
                         <li class="list-inline-item"><i class="fa fa-comments"></i>(<a href="news-details-one.html">13 Comments</a>)</li>
                     </ul>
-                    <img src="{% static 'assets/images/details-1.jpg' %}" alt="" class="img-fluid">
+                    {% if post.picture %}
+                    <img src="{{ post.picture.url }}" alt="" class="img-fluid">
+                    {% endif %}
                     <p>{{ post.body|linebreaks }}</p>
                 </div>
                 <div class="row">
@@ -67,7 +69,7 @@
                     <h6>ዘጋቢ: <span>{{ post.author.get_full_name }}</span></h6>
                     <p>{{ post.author.bio }}</p>
                     <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item"><a href="news-details-one.html"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ post.author.facebook }}"><i class="fa fa-facebook"></i></a></li>
                         <li class="list-inline-item"><a href="news-details-one.html"><i class="fa fa-twitter"></i></a></li>
                         <li class="list-inline-item"><a href="news-details-one.html"><i class="fa fa-linkedin"></i></a></li>
                         <li class="list-inline-item"><a href="news-details-one.html"><i class="fa fa-google-plus"></i></a></li>
@@ -89,7 +91,7 @@
                     </div>
                     <div class="comment-box comment-box2 d-flex">
                         <div class="comment-img">
-                            <img src="images/comment-1.jpg" alt="" class="img-fluid">
+                            <img src="{% static 'assets/images/comment-1.jpg' %}" alt="" class="img-fluid">
                         </div>
                         <div class="img-content">
                             <h6><a href="news-details-one.html">DAVID BOJE</a> September 24, 2017 at 3:15pm</h6>
@@ -99,7 +101,7 @@
                     </div>
                     <div class="comment-box d-flex">
                         <div class="comment-img">
-                            <img src="images/comment-1.jpg" alt="" class="img-fluid">
+                            <img src="{% static 'assets/images/comment-1.jpg' %}" alt="" class="img-fluid">
                         </div>
                         <div class="img-content">
                             <h6><a href="news-details-one.html">DAVID BOJE</a> September 24, 2017 at 3:15pm</h6>
@@ -132,7 +134,7 @@
                     <h4>RELATED NEWS</h4>
                     <div class="owl-carousel relate-slider">
                         <div class="slider-content">
-                            <img src="images/trending-2.jpg" alt="" class="img-fluid">
+                            <img src="{% static 'assets/images/trending-2.jpg' %}" alt="" class="img-fluid">
                             <div class="slider-layer">
                                 <p><a href="news-details-one.html">This handout will help you understand how paragraphs are formed.</a></p>
                                 <ul class="list-unstyled list-inline">
@@ -142,7 +144,7 @@
                             </div>
                         </div>
                         <div class="slider-content">
-                            <img src="images/popular-6.jpg" alt="" class="img-fluid">
+                            <img src="{% static 'assets/images/popular-6.jpg' %}" alt="" class="img-fluid">
                             <div class="slider-layer">
                                 <p><a href="news-details-one.html">This handout will help you understand how paragraphs are formed.</a></p>
                                 <ul class="list-unstyled list-inline">
@@ -152,7 +154,7 @@
                             </div>
                         </div>
                         <div class="slider-content">
-                            <img src="images/popular-2.jpg" alt="" class="img-fluid">
+                            <img src="{% static 'assets/images/popular-2.jpg' %}" alt="" class="img-fluid">
                             <div class="slider-layer">
                                 <p><a href="news-details-one.html">This handout will help you understand how paragraphs are formed.</a></p>
                                 <ul class="list-unstyled list-inline">

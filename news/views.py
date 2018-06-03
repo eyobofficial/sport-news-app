@@ -11,6 +11,16 @@ class IndexView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['breaking_post_list'] = models.Post.objects.breaking()[:10]
+        context['featured_post_list1'] = models.Post.objects.featured()[:3]
+        context['featured_post_list2'] = models.Post.objects.featured()[3:5]
+
+        # Latest News
+        context['latest_post1'] = models.Post.objects.non_featured()[0]
+        context['latest_post_list1'] = models.Post.objects.non_featured()[1:6]
+
+        context['popular_post_list'] = models.Post.objects.popular()[:6]
+
+        context['more_post_list'] = models.Post.objects.non_featured()[6:]
         context['page_name'] = 'መነሻ'
         return context
 
@@ -63,5 +73,10 @@ class TransferView(TemplateView):
         return context
 
 
-class PostDetailView(DetailView):
-    model = models.Post
+def post_detail(request, pk, slug):
+    post = get_object_or_404(models.Post, pk=pk, slug=slug)
+    post.read_count = post.read_count + 1
+    post.save()
+    return render(request, 'news/post_detail.html', {
+        'post': post,
+    })

@@ -27,8 +27,9 @@ class TagAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     list_display = [
         'title', 'author', 'catagory',
-        'published_at', 'status', 'featured',
+        'published_at', 'status', 'featured', 'read_count',
     ]
     list_filter = ['author', 'catagory', 'status', 'featured', ]
     prepopulated_fields = {'slug': ('translation', )}
+    filter_horizontal = ['tags', ]
 
