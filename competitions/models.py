@@ -33,7 +33,8 @@ class Team(Base):
     team_type = models.CharField(max_length=10, choices=TEAM_TYPE_OPTIONS)
     country = CountryField()
     name = models.CharField(max_length=60)
-    full_name = models.CharField(max_length=120, blank=True)
+    translation = models.CharField(max_length=100)
+    slug = models.SlugField()
     nickname = models.CharField(max_length=60, blank=True)
     logo = models.ImageField(upload_to='teams/logo/', blank=True, null=True)
     description = models.TextField(blank=True)
@@ -45,7 +46,7 @@ class Team(Base):
         return self.name
 
     def get_absolute_url(self, *args, **kwargs):
-        return reverse('news:team-detail', args=[str(self.pk)])
+        return reverse('news:team-detail', args=[str(self.pk), self.slug])
 
 
 class Competition(Base):
@@ -56,6 +57,8 @@ class Competition(Base):
         ('FRIENDLY', 'Friendly'),
     )
     name = models.CharField(max_length=60)
+    translation = models.CharField(max_length=100)
+    slug = models.SlugField()
     competition_type = models.CharField(
         max_length=10,
         choices=COMPETITION_TYPE_CHOICES,
@@ -73,7 +76,7 @@ class Competition(Base):
         return self.name
 
     def get_absolute_url(self, *args, **kwargs):
-        return reverse('news:competition-detail', args=[str(self.pk)])
+        return reverse('news:competition-detail', args=[str(self.pk), self.slug])
 
 
 class Match(Base):
@@ -92,6 +95,7 @@ class Match(Base):
         null=True,
         help_text='Title of the match'
     )
+    translation = models.CharField(max_length=100)
     slug = models.SlugField()
     description = models.TextField('Short match summary', blank=True)
     match_status = models.CharField(
