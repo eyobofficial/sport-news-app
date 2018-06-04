@@ -122,6 +122,7 @@ class Match(Base):
 
     class Meta:
         ordering = ['is_featured', 'title', ]
+        verbose_name_plural = 'Matches'
 
     def __str__(self):
         return '{} vs {} - {}'.format(
