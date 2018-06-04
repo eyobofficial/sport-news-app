@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_countries',
     'news.apps.NewsConfig',
     'pages.apps.PagesConfig',
+    'competitions.apps.CompetitionsConfig',
 ]
 
 MIDDLEWARE = [
